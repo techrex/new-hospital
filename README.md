@@ -1,5 +1,5 @@
 # new-hospital
----
+
 > 本项目使用Vue CLI 3搭建
 
 ## 编译命令

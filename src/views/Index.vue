@@ -12,7 +12,7 @@
         <div class="u-img f-hospital"></div>
         <div class="u-text">找医院</div>
       </div>
-      <div class="m-service">
+      <div class="m-service" @click="$router.push({ name: 'Drugs' })">
         <div class="u-img f-pills"></div>
         <div class="u-text">找药品</div>
       </div>

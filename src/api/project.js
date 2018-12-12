@@ -72,7 +72,7 @@ const appointmentHospital = (hospitalId, realName, tel, isNeedCar, isNeedAccompa
   SJHM: tel,
   SFYC: isNeedCar,
   SFPH: isNeedAccompany,
-  bz: bz,
+  BZ: bz,
   ZLYY: hospital
 }), {
   cancelToken

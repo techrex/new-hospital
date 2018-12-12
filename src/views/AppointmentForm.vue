@@ -25,7 +25,7 @@
       </div>
       <div v-if="$route.params.appointmentType === 'hospital'" class="m-input-container-textarea">
         <div class="u-label" style="white-space: nowrap">备注</div>
-        <textarea class="u-textarea" rows="4"></textarea>
+        <textarea class="u-textarea" rows="4" v-model="bz"></textarea>
       </div>
     </div>
     <div class="m-btn-container">
@@ -107,7 +107,7 @@ export default {
           this.axiosCancelToken
         ).then((data) => {
           this.isSubmit = false
-          if (data.data === '会诊成功') {
+          if (data.data === '预约成功' || data.data === '会诊成功') {
             this.$router.push({ name: 'AppointmentSuccess' })
           } else {
             this.$store.commit('showErrPopup', data.data)

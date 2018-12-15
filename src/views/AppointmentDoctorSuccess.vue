@@ -5,7 +5,7 @@
       <div class="m-check-container">
         <div class="u-check"></div>
       </div>
-      <div class="u-text">预约成功！</div>
+      <div class="u-text">会诊成功！</div>
     </div>
     <div class="m-bottom">
       <div class="u-btn" @click="$router.push({ name: 'Index' })">返回</div>
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'AppointmentSuccess',
+  name: 'AppointmentDoctorSuccess',
   data () {
     return {
     }

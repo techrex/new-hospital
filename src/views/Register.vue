@@ -118,6 +118,10 @@ export default {
             this.$store.commit('showErrPopup', '联系方式不能为空')
             return false
           }
+          if (!/\d{11}/.test(this.registerData.Step2.telp)) {
+            this.$store.commit('showErrPopup', '联系方式必须为11位数字')
+            return false
+          }
           if (!this.registerData.Step2.password) {
             this.$store.commit('showErrPopup', '密码不能为空')
             return false

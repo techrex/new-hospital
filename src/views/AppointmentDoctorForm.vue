@@ -15,17 +15,15 @@
         <div v-if="tel === ''" class="u-input-placeholder">联系方式</div>
         <input v-model="tel" type="tel" name="tel" class="u-input">
       </div>
-      <div class="m-input-container-switch">
-        <div class="u-label">是否用车</div>
-        <van-switch v-model="isNeedCar" active-color="#64acff" class="u-switch" />
-      </div>
-      <div class="m-input-container-switch">
-        <div class="u-label">是否陪护</div>
-        <van-switch v-model="isNeedAccompany" active-color="#64acff" class="u-switch" />
-      </div>
-      <div class="m-input-container-textarea">
-        <div class="u-label" style="white-space: nowrap">备注</div>
-        <textarea class="u-textarea" rows="4" v-model="bz"></textarea>
+      <div class="m-input-container-datetimepicker">
+        <div class="u-label" style="white-space: nowrap">会诊时间</div>
+        <van-datetime-picker
+          v-model="hzsj"
+          type="date"
+          :min-date="minDate"
+          :show-toolbar="false"
+          style="width: 100%"
+        />
       </div>
     </div>
     <div class="m-btn-container">
@@ -40,7 +38,7 @@
 <script>
 import projectApi from '@/api/project'
 export default {
-  name: 'AppointmentForm',
+  name: 'AppointmentDoctorForm',
   components: {
   },
   data () {
@@ -50,7 +48,9 @@ export default {
       isNeedCar: false,
       isNeedAccompany: false,
       bz: '',
-      isSubmit: false
+      hzsj: new Date(),
+      isSubmit: false,
+      minDate: new Date()
     }
   },
   mounted () {
@@ -81,19 +81,17 @@ export default {
         return false
       }
       this.isSubmit = true
-      projectApi.appointmentHospital(
+      projectApi.appointmentDoctor(
         this.$route.params.id,
         this.realName,
         this.tel,
-        this.isNeedCar ? 1 : 2,
-        this.isNeedAccompany ? 1 : 2,
-        this.bz,
         this.$route.params.hospital,
+        this.$_moment(this.hzsj).format('YYYY-MM-DD'),
         this.axiosCancelToken
       ).then((data) => {
         this.isSubmit = false
-        if (data.data === '预约成功') {
-          this.$router.push({ name: 'AppointmentSuccess' })
+        if (data.data === '会诊成功') {
+          this.$router.push({ name: 'AppointmentDoctorSuccess' })
         } else {
           this.$store.commit('showErrPopup', data.data)
         }
@@ -203,22 +201,13 @@ export default {
 .m-appointment-form .m-input-container-switch .u-switch {
   box-shadow: 0 1vh 2.7vh 0 rgba(52, 153, 246, 0.29);
 }
-.m-appointment-form .m-input-container-textarea {
-  display: flex;
+.m-appointment-form .m-input-container-datetimepicker {
   margin-top: 4vh;
   width: 87vw;
 }
-.m-appointment-form .m-input-container-textarea .u-label {
+.m-appointment-form .m-input-container-datetimepicker .u-label {
   margin-right: 6vw;
   color: #64acff;
-  font-size: 3.1vh;
-}
-.m-appointment-form .u-textarea {
-  resize: none;
-  width: 100%;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 1vh 2.7vh 0 rgba(52, 153, 246, 0.29);
   font-size: 3.1vh;
 }
 .m-appointment-form .m-btn-container {
@@ -237,5 +226,15 @@ export default {
   color: #fff;
   font-size: 3vh;
   text-align: center;
+}
+</style>
+
+<style>
+.m-appointment-form .van-picker-column__item {
+  color: #2d8fff;
+  opacity: 0.5;
+}
+.m-appointment-form .van-picker-column__item.van-picker-column__item--selected {
+  opacity: 1;
 }
 </style>

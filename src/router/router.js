@@ -15,6 +15,8 @@ import Appointments from '@/views/Appointments.vue'
 import Appointment from '@/views/Appointment.vue'
 import AppointmentForm from '@/views/AppointmentForm.vue'
 import AppointmentSuccess from '@/views/AppointmentSuccess.vue'
+import AppointmentDoctorForm from '@/views/AppointmentDoctorForm.vue'
+import AppointmentDoctorSuccess from '@/views/AppointmentDoctorSuccess.vue'
 import Test from '@/views/Test.vue'
 
 Vue.use(Router)
@@ -87,7 +89,7 @@ const router = new Router({
       component: Appointment
     },
     {
-      path: '/appointmentForm/:appointmentType/:hospital/:id',
+      path: '/appointmentForm/:hospital/:id',
       name: 'AppointmentForm',
       component: AppointmentForm
     },
@@ -95,6 +97,16 @@ const router = new Router({
       path: '/appointmentSuccess',
       name: 'AppointmentSuccess',
       component: AppointmentSuccess
+    },
+    {
+      path: '/appointmentDoctorForm/:hospital/:id',
+      name: 'AppointmentDoctorForm',
+      component: AppointmentDoctorForm
+    },
+    {
+      path: '/appointmentDoctorSuccess',
+      name: 'AppointmentDoctorSuccess',
+      component: AppointmentDoctorSuccess
     },
     {
       path: '/test',

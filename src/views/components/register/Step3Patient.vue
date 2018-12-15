@@ -54,18 +54,6 @@ export default {
 }
 </script>
 
-<style>
-.m-register-3-patient .van-picker-column__item {
-  font-size: 3vh;
-  color: #2d8fff;
-  opacity: 0.5;
-}
-.m-register-3-patient .van-picker-column__item.van-picker-column__item--selected {
-  font-size: 3.4vh;
-  opacity: 1;
-}
-</style>
-
 <style scoped>
 .m-register-3-patient {
   display: flex;
@@ -91,5 +79,17 @@ export default {
 .m-register-3-patient .m-data-picker-container .m-data-picker {
   width: 100%;
   height: 100%;
+}
+</style>
+
+<style>
+.m-register-3-patient .van-picker-column__item {
+  font-size: 3vh;
+  color: #2d8fff;
+  opacity: 0.5;
+}
+.m-register-3-patient .van-picker-column__item.van-picker-column__item--selected {
+  font-size: 3.4vh;
+  opacity: 1;
 }
 </style>

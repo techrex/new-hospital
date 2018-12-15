@@ -26,7 +26,6 @@
           @click="$router.push({
             name: 'AppointmentForm',
             params: {
-              appointmentType: 'hospital',
               hospital: name,
               id: $route.params.hospitalId
             }

@@ -46,11 +46,12 @@ const fetchAllAppointments = (cancelToken) => webgisRest.post('bfhkckcontrller/y
  * @param <String> hospital 治疗医院
  * @param <cancelToken> cancelToken
  */
-const appointmentDoctor = (doctorId, realName, tel, hospital, cancelToken) => webgisRest.post('bfhkckcontrller/hzqr', new URLSearchParams({
+const appointmentDoctor = (doctorId, realName, tel, hospital, hzsj, cancelToken) => webgisRest.post('bfhkckcontrller/hzqr', new URLSearchParams({
   ID: doctorId,
   NAME: realName,
   SJHM: tel,
-  yy: hospital
+  yy: hospital,
+  HZSJ: hzsj
 }), {
   cancelToken
 }).then(res => res.data)

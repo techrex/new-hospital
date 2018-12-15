@@ -21,9 +21,8 @@
         <div
           class="u-btn"
           @click="$router.push({
-            name: 'AppointmentForm',
+            name: 'AppointmentDoctorForm',
             params: {
-              appointmentType: 'doctor',
               hospital: hospital,
               id: $route.params.doctorId
             }
